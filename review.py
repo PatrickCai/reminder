@@ -4,6 +4,8 @@
 import sys
 import wx 
 
+import xerox
+
 import widget as mw
 import review_xml as rxml
 import review_list as rlist
@@ -98,7 +100,7 @@ class Frame(wx.Frame):
 		self.delete_button.Bind(wx.EVT_BUTTON, self.delete_dlg)
 
 	def add_item(self, event):
-		review_name = self.review_content.GetValue()
+		review_name = xerox.paste()
 		self.rl.add_item(review_name)
 		self.alert_message.show_message("Added!")
 
