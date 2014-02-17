@@ -1,16 +1,2 @@
 <review>
-	<reviewList>
-		<ID>1</ID>
-		<reviewName>python 复习</reviewName>
-		<times>2</times>
-		<dueTime>2013-10-3 12:00:00</dueTime>
-		<isDue>True</isDue>
-	</reviewList>
-	<reviewList>
-		<ID>3</ID>
-		<reviewName>ddd</reviewName>
-		<times>2</times>
-		<dueTime>2013-10-4 12:00:00</dueTime>
-		<isDue>True</isDue>
-	</reviewList>
 </review>
