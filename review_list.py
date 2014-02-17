@@ -19,9 +19,9 @@ class review_list(object):
 
 	def fetch_review_items(self):
 		'''return the first item to be reviewed and other review items_list to be reviewed'''
-		review_items = rxml().xml_to_items()
-		self.first_item = None if len(review_items)== 0 else review_items[0]
-		self.rest_review_items = [] if len(review_items) < 2 else review_items[1:]
+		self.review_items = rxml().xml_to_items()
+		self.first_item = None if len(self.review_items)== 0 else self.review_items[0]
+		self.rest_review_items = [] if len(self.review_items) < 2 else self.review_items[1:]
 
 	def add_item(self, review_name):
 		'''return nothing ,add the item into the review xml'''
@@ -43,6 +43,20 @@ class review_list(object):
 		rxml().delete_item(self.first_item.ID)
 		self.check_update()	
 		self.fetch_review_items()
+
+	def debug_info(self):
+		self.check_update()
+		self.fetch_review_items()
+		print("There are %s items to be reviewed"%(len(self.review_items)))
+		def print_info(review_name, review_times, due_time): 
+			print(u"The (%s) item has been reviewed for %s times its due time is %s"%(review_name, review_times, due_time))
+		if self.first_item:
+			print_info(self.first_item.review_name, self.first_item.times, self.first_item.due_time)
+		if self.rest_review_items:
+			for item in self.rest_review_items:
+				print_info(item.review_name, item.times, item.due_time)
+
+
 
 
 

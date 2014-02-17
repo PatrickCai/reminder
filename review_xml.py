@@ -70,7 +70,10 @@ class review_xml(object):
 	def add_item(self, review_name):
 		'''return the added item , add the review item into the review xml'''
 		#add the item into the xmls
-		ID = str(int(self.__root.find("reviewList[last()]/ID").text) + 1)
+		try :
+			ID = str(int(self.__root.find("reviewList[last()]/ID").text) + 1)
+		except AttributeError:
+			ID = 1 #In case there are no data in xml(which will never happen)
 		due_time = rtime.now().review_days(times=1)
 		reviewList = etree.SubElement(self.__root, "reviewList")
 		times = "1" #first review

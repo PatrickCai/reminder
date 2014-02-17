@@ -98,6 +98,7 @@ class Frame(wx.Frame):
 		self.add_button.Bind(wx.EVT_BUTTON, self.add_item)
 		self.complete_button.Bind(wx.EVT_BUTTON, self.complete_dlg)
 		self.delete_button.Bind(wx.EVT_BUTTON, self.delete_dlg)
+		self.next_button.Bind(wx.EVT_BUTTON, self.debug_info)
 
 	def add_item(self, event):
 		review_name = xerox.paste()
@@ -152,11 +153,13 @@ class Frame(wx.Frame):
 		else:
 			self.alert_message.show_message("No item!")
 
-	def delete_item(self):
+	def delete_item(self): 
 		self.rl.delete_item()
 		self.change_content_detail()
 		self.alert_message.show_message("Deleted!")
 
+	def debug_info(self, event):
+		self.rl.debug_info()
 
 class App(wx.App):
 	def __init__(self, redirect=False, filename=None):
@@ -172,5 +175,5 @@ class App(wx.App):
 		pass
 
 if __name__ == '__main__':
-	app = App(redirect=False)
+	app = App(redirect=True)
 	app.MainLoop()
